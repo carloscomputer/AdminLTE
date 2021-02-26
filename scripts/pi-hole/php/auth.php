@@ -13,9 +13,13 @@ if (empty($ERRORLOG)) {
 
     if (!file_exists($ERRORLOG) || !is_writable($ERRORLOG)) {
 	    $ERRORLOG = '/var/log/apache2/error.log';
-
+	    
 	    if (!file_exists($ERRORLOG) || !is_writable($ERRORLOG)) {
-		    $ERRORLOG = '/tmp/pi-hole-error.log';
+		    $ERRORLOG = '/var/log/nginx/error.log';
+
+	         if (!file_exists($ERRORLOG) || !is_writable($ERRORLOG)) {
+		         $ERRORLOG = '/tmp/pi-hole-error.log';
+	         }
 	    }
     }
 }
